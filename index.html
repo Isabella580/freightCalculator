@@ -30,6 +30,7 @@
     <label>Commission (%):</label><input type="number" id="commission"><br>
     <label>Daily Hire (USD/day):</label><input type="number" id="hire"><br>
     <button onclick="calculate()">Calculate</button>
+    <button onclick="resetForm()">Reset</button>
   </div>
 
   <div class="result" id="output"></div>
@@ -51,6 +52,15 @@
         commission: +document.getElementById("commission").value,
         hire: +document.getElementById("hire").value
       };
+
+    function resetForm() {
+      const fields = [
+      "cargo", "load", "discharge", "extra", "da", "laden", "ballast",
+      "base", "idle", "port", "bunker", "commission", "hire"
+      ];
+    fields.forEach(id => document.getElementById(id).value = "");
+    document.getElementById("output").innerHTML = "";
+    }
 
       const loadingDays = inputs.cargo / inputs.load;
       const dischargingDays = inputs.cargo / inputs.discharge;
